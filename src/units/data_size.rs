@@ -1,4 +1,4 @@
-use super::{HashMap, Lazy};
+use crate::units::common::*;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum DataSizeUnit {
