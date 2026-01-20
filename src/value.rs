@@ -1,10 +1,8 @@
 use crate::units::*;
 use std::collections::HashMap;
 
-// src/value.rs
 #[derive(Debug, Clone, PartialEq)]
 pub enum LaCoNValue {
-    // Типизированные значения (без кавычек в исходнике)
     Int(i64),
     Float(f64),
     Bool(bool),
