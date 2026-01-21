@@ -8,6 +8,7 @@ pub enum LaCoNValue {
     Bool(bool),
     Array(Vec<LaCoNValue>),
     Dictionary(HashMap<String, LaCoNValue>),
+    MultilineString { lines: Vec<String>, raw: bool },
     Length(f64, LengthUnit),
     Angle(f64, AngleUnit),
     Time(f64, TimeUnit),
@@ -15,6 +16,7 @@ pub enum LaCoNValue {
     Frequency(f64, FrequencyUnit),
     Percentage(f64),
     Fraction(f64),
+    // VariableRef(VariableRef),
     Auto,
     None,
 

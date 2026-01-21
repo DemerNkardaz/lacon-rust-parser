@@ -9,12 +9,14 @@ pub enum LengthUnit {
     Meter,      // m
     Kilometer,  // km
     Megameter,  // Mm
+    Foot,       // ft
     Mile,       // mi
     Em,         // em
     Rem,        // rem
     Point,      // pt
     Inch,       // in
     Pixel,      // px
+    Pica,       // pc
 }
 
 static LENGTH_UNITS: Lazy<HashMap<&'static str, LengthUnit>> = Lazy::new(|| {
@@ -33,6 +35,7 @@ static LENGTH_UNITS: Lazy<HashMap<&'static str, LengthUnit>> = Lazy::new(|| {
     m.insert("pt", LengthUnit::Point);
     m.insert("in", LengthUnit::Inch);
     m.insert("px", LengthUnit::Pixel);
+    m.insert("pc", LengthUnit::Pica);
     m
 });
 
