@@ -2,21 +2,21 @@ use crate::interpretator::prototypes::types::object::object::ObjectRef;
 use crate::interpretator::prototypes::types::object::routine::routine::{Routine, RoutineContent};
 use crate::interpretator::prototypes::types::prototype::PrototypeRef;
 
-pub struct Function;
+pub struct Procedure;
 
-impl Function {
-    /// Конструктор функции. Принимает Rust-функцию, возвращающую ObjectRef.
+impl Procedure {
+    /// Конструктор процедуры. Принимает Rust-функцию, возвращающую void ().
     pub fn new_instance(
         proto: PrototypeRef,
         name: String,
         parameters: Vec<String>,
-        func: fn(Vec<ObjectRef>) -> ObjectRef,
+        proc: fn(Vec<ObjectRef>),
     ) -> ObjectRef {
         Routine::new_instance(
             proto,
             name,
             parameters,
-            RoutineContent::NativeFunction(func),
+            RoutineContent::NativeProcedure(proc),
         )
     }
 }
