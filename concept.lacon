@@ -64,7 +64,7 @@ $let num 1
 	@retun true
 }
 /// Альтрантивная запись:
-@if ("word" !== "WORD" && "word" != "WORD") { /// ИСТИНА
+@if ("word" !== "WORD" && "word" == "WORD") { /// ИСТИНА
 	@retun true
 }
 
