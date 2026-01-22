@@ -8,7 +8,7 @@ use std::fmt;
 
 // Импортируем ваши типы, используя полные пути согласно структуре проекта
 use crate::interpretator::prototypes::types::object::object::{Object, ObjectValue};
-use crate::interpretator::prototypes::types::object::routine::procedure::Procedure;
+use crate::interpretator::prototypes::types::object::routine::procedure::procedure::Procedure;
 use crate::interpretator::prototypes::types::prototype::Prototype;
 
 fn main() {
