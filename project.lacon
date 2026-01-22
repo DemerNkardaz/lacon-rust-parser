@@ -1,0 +1,15 @@
+Основная-директория = src\interpretator\
+
+/// Описываются различные структуры
+Прототипы = src\interpretator\prototypes\
+
+/// Здесь описывается синтаксис, его анализ, парсинг и т.д.
+Прототипы = src\interpretator\frontend\
+
+/// Эта директория ТОЛЬКО для описания сущностей
+Типы = src\interpretator\prototypes\entities
+
+/// Эта директория ТОЛЬКО для описания типов, логика должна быть в другом месте
+Типы = src\interpretator\prototypes\types
+
+Концепты = src\interpretator\prototypes\concepts

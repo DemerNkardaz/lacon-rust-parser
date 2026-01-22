@@ -1,0 +1,31 @@
+[Mode:Data][Document:Dictionary]
+
+iterator operators(operatorsArray<array<operator>> [+, -, *, **, /, //]):<operator> {
+	const items<array<operator>> operatorsArray
+	return iterate(items, array)
+}
+
+function stagedMath(numbers<array> [], operatorSymbol<operator> +):<number> {
+	const result numbers[1] operatorSymbol numbers[2]
+	return result
+}
+
+const opsIter = operators()
+const bindedMath stagedMath.bind([1, 7], opsIter)
+
+
+maths {
+	"1 + 7" bindedMath()   // 1 + 7 = 8
+	"1 - 7" bindedMath()   // 1 - 7 = -6
+	"1 * 7" bindedMath()   // 1 * 7 = 7
+	"1 ** 7" bindedMath()  // 1 ** 7 = 1
+	"1 / 7" bindedMath()   // 1 / 7 ≈ 0.142857
+	"1 // 7" bindedMath()  // 1 // 7 = 0  (целочисленное деление)
+}
+
+print(maths["1 + 7"])   // 8
+print(maths["1 - 7"])   // -6
+print(maths["1 * 7"])   // 7
+print(maths["1 ** 7"])  // 1
+print(maths["1 / 7"])   // ≈0.142857
+print(maths["1 // 7"])  // 0

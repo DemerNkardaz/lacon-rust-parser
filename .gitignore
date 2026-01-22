@@ -1,6 +1,6 @@
 /target
 *.pdb
 *.exe
-*.lacon
+src/*.lacon
 *.ts
 *.js
