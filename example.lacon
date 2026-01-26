@@ -132,8 +132,10 @@ for (index, value) in [...] {
 
 }
 
-for (k, v) in {...} {}
-for (key, value) in {...} {}
+for item in Array { ... }
+
+for (k, v) in {...} { ... }
+for (key, value) in {...} { ... }
 
 loop 15 {
 	if (index < 10) { ... }
@@ -150,7 +152,21 @@ if (value is Array) { }
 if (value is Table) { }
 if (value is Dictionary) { }
 
+if (typeOf(value) === 'ElectricVoltage') { }
+
 array.spread()
+
+function coords(x: 0, y: 0, z: 0) { }
+
+global let flag<Boolean> true
+global let index<Hex> 0x1E
+loop 10 {
+	global.index *= (global.index // (2 * 7))
+	if (global.index > 32) {
+		global.flag false
+		break
+	}
+}
 
 let что-то-там = 20_000μW
 let speed<Speed> = unit(278, 'ft/s')
@@ -180,3 +196,26 @@ const hijklmn = -10kg
 const hijklmn = NaN
 
 let output [] auto none
+
+
+
+/|\ Ключевые слова, которые не определены на уровне синтаксиса (могут быть свободно исопльзованы), но определены в подсветке синтаксиса
+index index i j
+value values val vals v
+key keys k
+item items
+each
+data
+flag flags f
+output outputs
+input inputs
+x y z
+t c r n m
+
+/*
+|*
+
+
+
+*|
+*/
