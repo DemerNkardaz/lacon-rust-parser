@@ -141,7 +141,7 @@ loop 15 {
 	if (index < 10) { ... }
 }
 
-function name(input, data) {
+async function name(input, data) {
 	
 }
 
@@ -175,6 +175,12 @@ if (typeOf(value) === 'ElectricVoltage') { }
 array.spread()
 
 function coords(x: 0, y: 0, z: 0) { }
+function name(x, argument? /* Опциональный аргумент */) {
+	if !(argument is Nil) {}
+	if !(argument === nil) {}
+	if (argument !== nil) {}
+	if (type(argument) !== 'nil') {}
+}
 
 global let flag<Boolean> true
 global let index<Hex> 0x1E
@@ -272,7 +278,7 @@ t c r n m
 
 
 
-/|\ !Типы
+/|\ Типы
 
 String
 Boolean
