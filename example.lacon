@@ -146,6 +146,9 @@ function name(input, data) {
 if (value is ElectricPower) { }
 if (value is Base32) { }
 if (value is Octal) { }
+if (value is Array) { }
+if (value is Table) { }
+if (value is Dictionary) { }
 
 array.spread()
 
