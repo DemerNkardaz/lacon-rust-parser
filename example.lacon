@@ -139,9 +139,20 @@ loop 15 {
 	if (index < 10) { ... }
 }
 
+function name(input, data) {
+	
+}
+
+if (value is ElectricPower) { }
+if (value is Base32) { }
+if (value is Octal) { }
+
 array.spread()
 
 let что-то-там = 20_000μW
+let speed<Speed> = unit(278, 'ft/s')
+let speed<Speed> = fts(278)
+let speed<Speed> = eval('278ft/s')
 let speed<Speed> = 278ft/s
 let time<Time> = 25μs
 let length<Length> = 25pc
@@ -149,7 +160,7 @@ let degree<Degree> = 45°
 const generator-power<ElectricPower> = 15kW
 const vector-shield-dimension<Dimension> = 2D
 const fuel-energy<Energy> = 1.5MJ
-const temperature<Temperature> = 25°C
+const temperature<Temperature> = +25°C
 const temperature<Temperature> = 25K
 const resistance<ElectricResistance> = 10_000MΩ
 const resistance<ElectricResistance> = 10000kΩ
@@ -164,3 +175,5 @@ const hijklmn = -Infinitykg
 const abcdefg = 10kg
 const hijklmn = -10kg
 const hijklmn = NaN
+
+let output [] auto none
