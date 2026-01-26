@@ -145,6 +145,11 @@ function name(input, data) {
 	
 }
 
+function name (argument<Float>, argument<Int>):<Number> { ... }
+
+function name <T: Number, U: Number>(argument<T>: 0, argument<U>: 0):<T> { ... } /|\ Дженерики
+output = name<Float, Int>(12.543, 3)
+
 if (value is ElectricPower) { }
 if (value is Base32) { }
 if (value is Octal) { }
@@ -204,6 +209,7 @@ index index i j
 value values val vals v
 key keys k
 item items
+argument arguments arg args
 each
 data
 flag flags f
