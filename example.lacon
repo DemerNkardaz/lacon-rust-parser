@@ -145,10 +145,23 @@ function name(input, data) {
 	
 }
 
+Type Unit::WaveLength Extends Unit::Length {
+	private const fieldName<Number> = 0
+	
+}
+
 function name (argument<Float>, argument<Int>):<Number> { ... }
 
 function name <T: Number, U: Number>(argument<T>: 0, argument<U>: 0):<T> { ... } /|\ Дженерики
 output = name<Float, Int>(12.543, 3)
+
+arr<String[]> = [] /|\ С добавлением объекта (массив, словарь) мы указываем, что значение не строка, а массив/словарь строк
+arr<String[][]> = [] /|\ Массив массивов строк
+arr<String{}> = {}
+arr<String[]{}> = {} /|\ Словарь, где значения — массивы строк
+
+function name <T: Any[], U: Any{}>(argument<T>, argument<U>):<Any> { ... } /|\ Объекты аргументов могут содержать любой тип данных, но сами аргументы могут быть только массивом и словарём
+output = name<ElectricPower, ElectricCapacitance>(Array, Dictionary) /|\ Несмотря на объявление типов без [], {} — аргументы всё равно могут быть только массивом и словарём, как было при объявлении функции
 
 if (value is ElectricPower) { }
 if (value is Base32) { }
@@ -188,17 +201,31 @@ const temperature<Temperature> = +25°C
 const temperature<Temperature> = 25K
 const resistance<ElectricResistance> = 10_000MΩ
 const resistance<ElectricResistance> = 10000kΩ
+const field-area<Area> = 73.14m2
+const cube-volume<Volume> = 15m3
+const vessel-volume<Volume> = 0.1kL /|\ 0.1 килолитра
 const number2<Number> = 0b1011110011
 const number8<Number> = 0o071
 const number16<Number> = 0x348FABD1
 const number32<Number> = 0tL1FF
 const number32<Number> = 0cZYX
 
+const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: 0kL):<Volume> {
+	return inputVolume -> outputVolume /|\ = 1kL (Килолитр)
+}
+const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
+const volume = converter(2700L, 0ML) /|\ = 0.0027ML (Мегалитров)
+const volume = 25m3 + 3000L /|\ = 28m3 (Используется тип операнда слева)
+const volume = 25m3 + 10 /|\ = 35m3 (Числа без типов Unit приравниваются к типу операнда слева)
+
 const abcdefg = Infinitykg
 const hijklmn = -Infinitykg
 const abcdefg = 10kg
 const hijklmn = -10kg
 const hijklmn = NaN
+
+global let power_list<ElectricPower[]> = [10kW, 15kW, 20kW]
+global let caps_map<ElectricCapacitance{}> = { main: 100μF, extra: 10μF }
 
 let output [] auto none
 
@@ -225,3 +252,39 @@ t c r n m
 
 *|
 */
+
+
+
+/|\ !Типы
+
+String
+Boolean
+Color
+Number > Int | Float | Binary | Octal | Hex | Base32
+Object > Array | Dictionary | Table | Function | MultilineString
+Auto | None | Nil | Undefined
+Unit >
+	| Degree
+	| Radian
+	| Percent
+	| Length
+	| Time
+	| Frequency
+	| Speed
+	| Size
+	| Mass
+	| Fraction
+	| Dimension
+	| Temperature
+	| ElectricVoltage
+	| ElectricCurrent
+	| ElectricCharge
+	| ElectricResistance
+	| ElectricConductance
+	| ElectricCapacitance
+	| ElectricPower
+	| Pressure
+	| Energy
+	| Force
+	| Area
+	| Volume
