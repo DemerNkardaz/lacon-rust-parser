@@ -64,8 +64,22 @@ spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni']) as let (letter-case, su
 		}
 	}
 }
+
+const data = {
+	/|\ expansion-spread: zip-итерирует источники и расширяет yield-результаты в текущий контейнер
+	spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (letter-case, suffix, code-point) {
+		yield hel_${letter-case}_let_a_alpha__${suffix} {
+			unicode: code-point
+			symbol {
+				letter: `hel_${letter-case}_let_a_alpha`
+			}
+		}
+	}
+}
+const data = {}
 spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (letter-case, suffix, code-point) {
-	yield hel_${letter-case}_let_a_alpha__${suffix} {
+	/|\ procedural-spread: zip-итерирует источники и выполняет тело ради побочных эффектов
+	data.hel_${letter-case}_let_a_alpha__${suffix} {
 		unicode: code-point
 		symbol {
 			letter: `hel_${letter-case}_let_a_alpha`
