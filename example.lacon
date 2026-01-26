@@ -187,10 +187,10 @@ loop 10 {
 }
 
 let что-то-там = 20_000μW
-let speed<Speed> = unit(278, 'ft/s')
-let speed<Speed> = fts(278)
-let speed<Speed> = eval('278ft/s')
-let speed<Speed> = 278ft/s
+let speed<Velocity> = unit(278, 'ft/s')
+let speed<Velocity> = fts(278)
+let speed<Velocity> = eval('278ft/s')
+let speed<Velocity> = 278ft/s
 let time<Time> = 25μs
 let length<Length> = 25pc
 let degree<Degree> = 45°
@@ -209,6 +209,23 @@ const number8<Number> = 0o071
 const number16<Number> = 0x348FABD1
 const number32<Number> = 0tL1FF
 const number32<Number> = 0cZYX
+const mib<BitRate> = 25MiB/s
+const mib<BitRate> = 25kbit/s
+let a<Velocity> = 2.5m/s
+let a<Acceleration> = 2.5m/s2
+let a<Jerk> = 2.5m/s3
+let a<Snap> = 2.5m/s4
+let a<Crackle> = 2.5m/s5
+let a<Pop> = 2.5m/s6
+let a<Velocity> = 2.5Tm/h
+let a<Velocity> = 2.5km/h
+let a<Velocity> = 2.5m/h
+let a<Velocity> = 2.5μm/s
+
+let a<Illuminance> = 25lx
+let a<LuminousFlux> = 25lm
+let a<LuminousIntensity> = 25cd
+let a<Amount> = 25mol
 
 const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: 0kL):<Volume> {
 	return inputVolume -> outputVolume /|\ = 1kL (Килолитр)
@@ -227,7 +244,7 @@ const hijklmn = NaN
 global let power_list<ElectricPower[]> = [10kW, 15kW, 20kW]
 global let caps_map<ElectricCapacitance{}> = { main: 100μF, extra: 10μF }
 
-let output [] auto none
+let output = []
 
 
 
@@ -270,8 +287,13 @@ Unit >
 	| Length
 	| Time
 	| Frequency
-	| Speed
+	| Velocity
+	| Acceleration
+	| Snap
+	| Crackle
+	| Pop
 	| Size
+	| BitRate
 	| Mass
 	| Fraction
 	| Dimension
@@ -283,6 +305,10 @@ Unit >
 	| ElectricConductance
 	| ElectricCapacitance
 	| ElectricPower
+	| Illuminance
+	| LuminousFlux
+	| LuminousIntensity
+	| Amount
 	| Pressure
 	| Energy
 	| Force
