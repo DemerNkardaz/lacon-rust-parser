@@ -86,14 +86,69 @@ spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (l
 		}
 	}
 }
+const merged = {};
+spread({a:1, b:2}, {c:3, d:4}) as let (k, v) {
+    merged[k] = v
+}
+const obj = {
+    spread({a:1, b:2}) as let (k, v) {
+        yield { [k]: v }
+    }
+}
+const result = {};
+spread({a:1, b:2}, {c:3, d:4}) as let (k, v) {
+    if (v % 2 === 0) result['even_' + k] = v
+}
 
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+const evenNumbers = [
+	/|\ filter как expression-блок: итерирует источник, отдаёт только yield-значения в результирующий массив
+  filter (numbers) as let (n) {
+    if (n % 2 == 0) yield n
+  },
+	value(),
+	value(),
+	value(),
+]
+const evenNumbers = {
+	/|\ filter как expression-блок для объектов: итерирует источник, yield отдаёт пары ключ-значение в результирующий объект
+  filter (numbers) as let (n) {
+    if (n % 2 == 0) yield {number_${n}: n}
+  }
+}
+
+obj.method()
+obj.methods()
+
+class String extends Prototype {
+	public methods = {}
+
+	static Init() {
+		const use = global.variableName
+	}
+}
+
+for (index, value) in [...] {
+
+}
+
+for (k, v) in {...} {}
+for (key, value) in {...} {}
+
+loop 15 {
+	if (index < 10) { ... }
+}
+
+array.spread()
+
+let что-то-там = 20_000μW
 let speed<Speed> = 278ft/s
 let time<Time> = 25μs
 let length<Length> = 25pc
 let degree<Degree> = 45°
 const generator-power<ElectricPower> = 15kW
 const vector-shield-dimension<Dimension> = 2D
-const fule-energy<Energy> = 1.5MJ
+const fuel-energy<Energy> = 1.5MJ
 const temperature<Temperature> = 25°C
 const temperature<Temperature> = 25K
 const resistance<ElectricResistance> = 10_000MΩ
