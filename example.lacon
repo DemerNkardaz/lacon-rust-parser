@@ -346,6 +346,8 @@ Unit >
 [Marker:Output<Dictionary>]
 key value
 key {
+	key ${if (condition) {} else {}}
+	key ${condition ? then : else}
 	key value
 }
 [
