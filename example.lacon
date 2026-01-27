@@ -226,6 +226,21 @@ const obj  {
 	key2: root.obj.obj.obj.obj.obj.obj.obj
 }
 
+class SomeClass {
+	public static version = 1
+	public version = 1
+
+	Init(version) {
+		/|\ «origin» позволяет ссылаться на исходный объект (например, инстансу класса на сам класс, вместо того, чтоб прописывать его имя)
+		if (this.version > origin.version) {
+			...
+		}
+	}
+}
+/|\ придумать как ссылаться на свойства верхнего класса (когда class classname extends classname)
+
+
+
 archive.get("data")
 
 let что-то-там = 20_000μW
