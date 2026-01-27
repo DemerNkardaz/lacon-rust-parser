@@ -239,7 +239,7 @@ class SomeClass {
 }
 /|\ придумать как ссылаться на свойства верхнего класса (когда class classname extends classname)
 
-
+const arr = new Array() === const arr = []
 
 archive.get("data")
 
@@ -303,6 +303,17 @@ global let caps_map<ElectricCapacitance{}> = { main: 100μF, extra: 10μF }
 
 let output = []
 
+const monus = 25kW ∸ 100
+const monus = 25 .- 100
+const (a, b) = ([20kW, 50kW], [10MJ, 8MJ])
+const cartesian = a ∔ b
+			cartesian ≣ [(20kW, 10MJ), (20kW, 10MJ), (50kW, 10MJ), (50kW, 10MJ)]
+
+.= != &= += -= /= %=
+== === <= => !=
+=> |> ->
+25 ∸ 100
+string ≣ string
 
 
 /|\ Ключевые слова, которые не определены на уровне синтаксиса (могут быть свободно исопльзованы), но определены в подсветке синтаксиса
