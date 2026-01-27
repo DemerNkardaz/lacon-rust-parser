@@ -32,48 +32,46 @@ print(maths["1 // 7"])  /|\ 0
 
 generate (0 .. 7) as local let i {
 	local const hex-value = format("{:04X}", $i)
-	yield domino_n_tile_00_0${i}_horizontal {
+	yield {domino_n_tile_00_0${i}_horizontal: {
 		[code-point, recipe] [`U+${hex-value}`, [dm h${i}]]
 		symbol-data [character, designation]=[\u{format("{:04X(0x1F031)}", ${i})}, "00-0${i}"]
-	}
+	}}
 }
 generate (0x4E3 .. -10) as local let code-point {
-	yield unicode-${code-point} {
+	yield {unicode-${code-point}: {
 		char \u{${code-point}}
-	}
+	}}
 }
 spread ['one', 'two', 'three', 'four', 'five'] as name {
-	yield digit-${name} {
-		number-value: index
-	}
+	yield {digit-${name}: { number-value: index }}
 }
 spread ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces', 'ophiuchus'] as let name {
 	local code-point = format("{:04X}", 0x2648 + index)
-	yield astrological-zodiacal-sign-{name}-text {
+	yield {astrological-zodiacal-sign-{name}-text: {
 		code-point: `U+${code-point}`
 		sequence: [code-point, `FE0E`]
 		pos: index
-	}
+	}}
 }
 spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni']) as let (letter-case, suffix) {
 	local const code-points = [1FBC, 1FB3]
-	yield hel_${letter-case}_let_a_alpha__${suffix} {
+	yield {hel_${letter-case}_let_a_alpha__${suffix}: {
 		unicode: select(code-points)
 		symbol {
 			letter: hel_${letter-case}_let_a_alpha
 		}
-	}
+	}}
 }
 
 const data = {
 	/|\ expansion-spread: zip-итерирует источники и расширяет yield-результаты в текущий контейнер
 	spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (letter-case, suffix, code-point) {
-		yield hel_${letter-case}_let_a_alpha__${suffix} {
+		yield {hel_${letter-case}_let_a_alpha__${suffix}: {
 			unicode: code-point
 			symbol {
 				letter: `hel_${letter-case}_let_a_alpha`
 			}
-		}
+		}}
 	}
 }
 const data = {}
@@ -179,8 +177,10 @@ function name(x, argument? /* Опциональный аргумент */) {
 	if !(argument is Nil) {}
 	if !(argument === nil) {}
 	if (argument !== nil) {}
-	if (type(argument) !== 'nil') {}
+	if (typeOf(argument) !== 'nil') {}
 }
+function name(x, argument<Int>? /* Опциональный аргумент */) {}
+function name(x, &argument<Int>? /* Опциональный refrence-аргумент */) {}
 
 global let flag<Boolean> true
 global let index<Hex> 0x1E
@@ -191,6 +191,26 @@ loop 10 {
 		break
 	}
 }
+const name = new Class()
+
+const baseSymbol<Dictionary> {
+	unicode<String>: ""
+}
+
+const data = {
+	spread(['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], ['1FBC', '1FB3']) as let (letter-case, suffix, code-point) {
+		const base = with baseSymbol { unicode: code-point }
+		yield { hel_${letter-case}_let_a_alpha__${suffix}: base }
+	}
+	/|\ ↓
+	hel_c_let_a_alpha__prosgegrammeni {
+		unicode: '1FBC'
+	}
+	hel_s_let_a_alpha__ypogegrammeni {
+		unicode: '1FB3'
+	}
+}
+
 
 let что-то-там = 20_000μW
 let speed<Velocity> = unit(278, 'ft/s')
@@ -320,3 +340,17 @@ Unit >
 	| Force
 	| Area
 	| Volume
+
+
+/|\ Маркер указывает на то, что всё что идёт после него — объект данных. Это позволяет использовать язык как динамическое хранилище данных без лишних сложностей с выводом нужного для чтения программой
+[Marker:Output<Dictionary>]
+key value
+key {
+	key value
+}
+[
+	item
+	item
+	item
+	item
+]
