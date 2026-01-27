@@ -211,6 +211,22 @@ const data = {
 	}
 }
 
+structure TestObject {
+	x<Length>: 15cm
+	y<Length>: 15cm
+	z<Length> => root.x * root.y /|\ key => value — «ленивый доступ», вычисляет значение каждый раз при доступе к нему
+}
+
+const newObject<TestObject> {x: 30cm}
+print(newObject.z) /|\ = 450cm
+
+const obj  {
+	key: 1
+	obj { obj { obj { obj { obj { obj { obj { key: root.key } } } } } } } /|\ root — корент текущего объявленного объекта-значения
+	key2: root.obj.obj.obj.obj.obj.obj.obj
+}
+
+archive.get("data")
 
 let что-то-там = 20_000μW
 let speed<Velocity> = unit(278, 'ft/s')
@@ -278,7 +294,7 @@ let output = []
 index index i j
 value values val vals v
 key keys k
-item items
+item items element elements elem elems
 argument arguments arg args
 each
 data
@@ -287,6 +303,8 @@ output outputs
 input inputs
 x y z
 t c r n m
+
+get set
 
 /*
 |*
@@ -344,13 +362,13 @@ Unit >
 
 /|\ Маркер указывает на то, что всё что идёт после него — объект данных. Это позволяет использовать язык как динамическое хранилище данных без лишних сложностей с выводом нужного для чтения программой
 [Marker:Output<Dictionary>]
-key value
+key<Boolean> value
 key {
-	key ${if (condition) {} else {}}
-	key ${condition ? then : else}
-	key value
+	key<String> ${if (condition) {} else {}}
+	key<String> ${condition ? then : else}
+	key<Int> value
 }
-[
+key<Array> [
 	item
 	item
 	item
