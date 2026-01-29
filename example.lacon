@@ -335,6 +335,27 @@ const entity = new User {
 			/* Логика */
 		}
 }
+/|\ Статус экшена:
+allowed
+denied
+sanctioned
+executed
+
+policy AdminOnly {
+    only admin
+    sanction unauthorized -> deny
+}
+const user<Subject> {
+
+}
+
+action deleteUser() {
+    use AdminOnly
+    condition authenticated
+} {
+    eraseUser()
+}
+
 
 
 /|\ Ключевые слова, которые не определены на уровне синтаксиса (могут быть свободно исопльзованы), но определены в подсветке синтаксиса
@@ -369,7 +390,7 @@ String
 Boolean
 Color
 Number > Int | Float | Binary | Octal | Hex | Base32
-Object > Array | Dictionary | Table | Function | MultilineString
+Object > Array | Dictionary | Subject | Table | Function | MultilineString
 Auto | None | Nil | Undefined
 Unit >
 	| Degree
