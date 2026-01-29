@@ -140,12 +140,12 @@ loop 15 {
 }
 
 async function name(input, data) {
-	
+
 }
 
 Type Unit::WaveLength Extends Unit::Length {
 	private const fieldName<Number> = 0
-	
+
 }
 
 function name (argument<Float>, argument<Int>):<Number> { ... }
@@ -314,6 +314,27 @@ const cartesian = a ∔ b
 => |> ->
 25 ∸ 100
 string ≣ string
+
+
+delete(user) {
+    sanction unauthorized => deny
+}
+
+sanction overflow => panic
+sanction access_violation => log
+
+const entity = new User {
+    role be only admin | guest
+    password may exist
+
+    action delete() {
+        only admin
+        condition authenticated
+        sanction unauthorized -> deny
+		} {
+			/* Логика */
+		}
+}
 
 
 /|\ Ключевые слова, которые не определены на уровне синтаксиса (могут быть свободно исопльзованы), но определены в подсветке синтаксиса
