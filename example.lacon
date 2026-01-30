@@ -284,7 +284,12 @@ let a<LuminousFlux> = 25lm
 let a<LuminousIntensity> = 25cd
 let a<Amount> = 25mol
 
-const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: 0kL):<Volume> {
+let a<Momentum> = 25kg*m/s
+let a<Momentum> = 25kg/μs
+
+let conv = 25m3 -> nL /|\ = 25.000 Литров
+
+const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: nkL):<Volume> {
 	return inputVolume -> outputVolume /|\ = 1kL (Килолитр)
 }
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
@@ -370,7 +375,7 @@ flag flags f
 output outputs
 input inputs
 x y z
-t c r n m
+t c r m n
 
 get set
 
