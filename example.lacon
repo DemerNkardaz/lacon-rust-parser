@@ -266,7 +266,7 @@ const number8<Number> = 0o071
 const number16<Number> = 0x348FABD1
 const number32<Number> = 0tL1FF
 const number32<Number> = 0cZYX
-const mib<BitRate> = 25MiB/s
+const mib<BitRate> = 25MiByte/s
 const mib<BitRate> = 25kbit/s
 let a<Velocity> = 2.5m/s
 let a<Acceleration> = 2.5m/s2
@@ -285,6 +285,8 @@ let a<LuminousIntensity> = 25cd
 let a<Amount> = 25mol
 
 let a<Momentum> = 25kg*m/s
+let a<Momentum> = 25kg·m/s
+let a<Momentum> = 25kg/ms
 let a<Momentum> = 25kg/μs
 
 let conv = 25m3 -> nL /|\ = 25.000 Литров
@@ -320,6 +322,10 @@ const cartesian = a ∔ b
 25 ∸ 100
 string ≣ string
 
+const floot = ⌊ 29.3kW ⌋
+const ceil = ⌈ +17.1°C + Δ +14°F ⌉
+const ev = 17MeV + (1000ppt * 500%)
+100‱
 
 delete(user) {
     sanction unauthorized => deny
