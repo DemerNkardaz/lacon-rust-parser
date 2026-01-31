@@ -305,11 +305,9 @@ const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: nkL):<Volume> 
 
 public function name(...):<Int> {
 	{ /|\ Просто вложенный блок
-
 	}
 
 	§ { /|\ Анонимная секция
-
 	}
 
 	static §section-name { /|\ Именованная секция
@@ -324,6 +322,42 @@ public function name(...):<Int> {
 
 	return §section-name.name(§section-name2.name)
 }
+
+/|\ К статическим секциям и их полям внутри функции можно получить доступ извне, и это единственные данные, которые можно получить таким образом без вызова функции:
+
+public function calculate_tax(amount:<Float>):<Float> {
+  static §config {
+    public const rate<Float> = 0.20 /|\ По умолчанию public, не обязательно явно указывать
+    public const limit<Int> = 1000
+    private const что-то-ещё<Int> = 1 /|\ К этому полю нельзя будет получить доступ извне
+  }
+
+  return amount * §config.rate
+}
+
+print(calculate_tax.§config.rate)
+
+public function renderButton(settings<Dictionary> = self.§settings.UI) { /|\ self — интроспективный указатель контекста, в отличие от this, позволяет ссылаться на внутренние свойства вызываемой функции
+	static §settings {
+		public const UI<Dictionary> = {
+			width<Length>: 15em,
+			height<Length>: 2.5em,
+			font-size<Length>: 1.25rem,
+			border-radius<Length>: 5px,
+			color<Color>: RGBA(250, 130, 70, 1),
+		}
+	}
+
+	§sub-functions { ... }
+
+	const buttonObject = ...
+
+	/* buttonObject handling */
+
+	return buttonObject
+}
+
+const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 200, 120, 0.8)})
 
 
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
