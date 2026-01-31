@@ -285,10 +285,11 @@ let a<LuminousIntensity> = 25cd
 let a<Amount> = 25mol
 
 let a<Momentum> = 25kg*m/s
-let a<Momentum> = 25kg·m/s
+let a<Momentum> = 25kg⋅m/s
 let a<Momentum> = 25kg/ms
 let a<Momentum> = 25kg/μs
-
+let a = 10 kW⋅s
+let a = n kW⋅s
 let conv = 25m3 -> nL /|\ = 25.000 Литров
 
 const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: nkL):<Volume> {
