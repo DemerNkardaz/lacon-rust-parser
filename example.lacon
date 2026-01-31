@@ -182,6 +182,12 @@ function name(x, argument? /* Опциональный аргумент */) {
 function name(x, argument<Int>? /* Опциональный аргумент */) {}
 function name(x, &argument<Int>? /* Опциональный refrence-аргумент */) {}
 
+
+strict function name(a, b) { ... } /|\ Строгая функция, не может влиять на данные вне своего scope, мутировать входные данные
+
+function name(a, b) { global.c = a + b } /|\ OK
+strict function name(a, b) { global.c = a + b } /|\ Ошибка
+
 global let flag<Boolean> true
 global let index<Hex> 0x1E
 loop 10 {
@@ -244,7 +250,7 @@ const arr = new Array() === const arr = []
 archive.get("data")
 
 let что-то-там = 20_000μW
-let speed<Velocity> = unit(278, 'ft/s')
+let speed<Velocity> = unit(278, nft/s)
 let speed<Velocity> = fts(278)
 let speed<Velocity> = eval('278ft/s')
 let speed<Velocity> = 278ft/s
@@ -447,6 +453,7 @@ key {
 	key<String> ${if (condition) {} else {}}
 	key<String> ${condition ? then : else}
 	key<Int> value
+	key<String> 'Это строка со ссылкой на ${переменную} ${LuminousFlux} ${if ...}'
 }
 key<Array> [
 	item
@@ -454,3 +461,5 @@ key<Array> [
 	item
 	item
 ]
+[Marker:Output<Dictionary> as JSON]
+[Marker:Output<Dictionary> as YAML]
