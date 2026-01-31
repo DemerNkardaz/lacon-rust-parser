@@ -64,19 +64,19 @@ spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni']) as let (letter-case, su
 }
 
 const data = {
-	/|\ expansion-spread: zip-итерирует источники и расширяет yield-результаты в текущий контейнер
-	spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (letter-case, suffix, code-point) {
-		yield {hel_${letter-case}_let_a_alpha__${suffix}: {
+	/|\ expansion-spread: итерирует источники и расширяет yield-результаты в текущий контейнер
+	spread (["c", "s"], ["prosgegrammeni", "ypogegrammeni"], ["1FBC", "1FB3"]) as let (letter-case, suffix, code-point) {
+		yield hel_${letter-case}_let_a_alpha__${suffix}, {
 			unicode: code-point
 			symbol {
-				letter: `hel_${letter-case}_let_a_alpha`
+				letter: 'hel_${letter-case}_let_a_alpha'
 			}
-		}}
+		}
 	}
 }
 const data = {}
-spread (['c', 's'], ['prosgegrammeni', 'ypogegrammeni'], [1FBC, 1FB3]) as let (letter-case, suffix, code-point) {
-	/|\ procedural-spread: zip-итерирует источники и выполняет тело ради побочных эффектов
+spread (["c", "s"], ["prosgegrammeni", "ypogegrammeni"], ["1FBC", "1FB3"]) as let (letter-case, suffix, code-point) {
+	/|\ procedural-spread: итерирует источники и выполняет тело ради побочных эффектов
 	data.hel_${letter-case}_let_a_alpha__${suffix} {
 		unicode: code-point
 		symbol {
@@ -90,7 +90,7 @@ spread({a:1, b:2}, {c:3, d:4}) as let (k, v) {
 }
 const obj = {
     spread({a:1, b:2}) as let (k, v) {
-        yield { [k]: v }
+        yield [k], v
     }
 }
 const result = {};
@@ -294,13 +294,38 @@ let a<Momentum> = 25kg*m/s
 let a<Momentum> = 25kg⋅m/s
 let a<Momentum> = 25kg/ms
 let a<Momentum> = 25kg/μs
-let a = 10 kW⋅s
+let a = 10kW⋅s
 let a = n kW⋅s
 let conv = 25m3 -> nL /|\ = 25.000 Литров
+let conv = 25m3 → nL /|\ = 25.000 Литров
 
 const converter(inputVolume<Volume>: 1000L, outputVolume<Volume>: nkL):<Volume> {
 	return inputVolume -> outputVolume /|\ = 1kL (Килолитр)
 }
+
+public function name(...):<Int> {
+	{ /|\ Просто вложенный блок
+
+	}
+
+	§ { /|\ Анонимная секция
+
+	}
+
+	static §section-name { /|\ Именованная секция
+		const name<Int> = ...
+
+		strict public function name(...):<Int> { ... }
+	}
+
+	§section-name-2 {
+		const name<Int> = §section-name.name ×× 4
+	}
+
+	return §section-name.name(§section-name2.name)
+}
+
+
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
 const volume = converter(2700L, 0ML) /|\ = 0.0027ML (Мегалитров)
 const volume = 25m3 + 3000L /|\ = 28m3 (Используется тип операнда слева)
