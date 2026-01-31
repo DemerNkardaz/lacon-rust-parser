@@ -359,6 +359,35 @@ public function renderButton(settings<Dictionary> = self.§settings.UI) { /|\ se
 
 const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 200, 120, 0.8)})
 
+§utils {
+	public strict function isOdd(input<Int>):<Boolean> => input % 2 !== 0
+	public strict function isEvent(input<Int>):<Boolean> => input % 2 === 0
+	public strict function truncate(input<String>, length<Int>, ending<String> = '...'):<String> => input.subStr(1, length) ending
+
+	public procedure switchLanguage(language<String> = "en-US") {
+		try {
+			if language in LanguageClass.supportedList {
+				LanguageClass.currentLanguage = language
+			}
+		} catch as e {
+			throw e
+		}
+	}
+
+	public procedure switchLanguage(language<String> = "en-US") {
+		try
+			if language in LanguageClass.supportedList
+				LanguageClass.currentLanguage = language
+		catch as e
+			throw e
+	}
+
+	public procedure switchLanguage(language<String> = "en-US") {
+		try { language in LanguageClass.supportedList && LanguageClass.currentLanguage = language }
+		catch as e { throw e }
+	}
+}
+
 
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
 const volume = converter(2700L, 0ML) /|\ = 0.0027ML (Мегалитров)
