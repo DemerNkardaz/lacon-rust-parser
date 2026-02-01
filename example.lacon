@@ -390,8 +390,54 @@ const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 20
 
 @[атрибуты и правила] указывают ограничения для поля, доступны разные параметры в зависимости от типа данных
 
-let explosion_radius<Length>@[value > 0m, value <= 50m] = 15m
-explosion_radius = -15m /|\ автоматически станет 1m, ведь -15m не проходит проверки value > 0m, но предупреждает о неправильном значении
+let explosion_radius<Length>@[unit: nm, value > 0m, value <= 50m, clamp] = 15m
+
+let explosion_radius<Length>@[
+	unit: nm,
+	value > 0m,
+	value <= 50m,
+	clamp
+] = 15m
+
+explosion_radius = -15m /|\ Автоматически станет 1m, ведь -15m не проходит проверки value > 0m, но предупреждает о неправильном значении
+explosion_radius = -15cm /|\ Ошибка, ожидался метр, получен сантиметр
+
+strict let explosion_radius<Length>@[unit: nm, value > 0m, value <= 50m, clamp] = 15m
+explosion_radius = -15m /|\ При использовании «strict» любой выход за пределы условий будет выбрасывать ошибку даже не смотря на наличие атрибута clamp
+
+/|\ Атрибуты и правила не обязательно задавать сразу при объявлении
+strict let explosion_radius<Length>= 15m
+
+explosion_radius@[unit: nm, value > 0m, value <= 50m, clamp, value |> (x: x.floor())]
+/|\ или
+attribute(explosion_radius)[
+	unit: nm,
+	value > 0m,
+	value <= 50m,
+	clamp,
+	value |> (x: x.floor())
+]
+
+public strict static const obj<Dictionary>@[immutable, lazy] = { /|\ Создаётся «ленивая» постоянная иммутабельного словаря
+	getType => root.type
+	getTypeInheritance => root.ancestorTypes
+}
+print(obj.getType()) /|\ Dictionary
+print(obj.getTypeInheritance().Join(" → ")) /|\ Prototype → Object → Dictionary
+
+public let var_callback@[on_change: callbackFunc] = ... /|\ При изменении значения вызывается коллбек-функция, но при этом она не триггерит новое событие change если перезаписывает значение через return
+
+function callbackFunc(a) {
+	if a < 5 {
+		throw
+	} else {
+		return a * 2
+	}
+}
+
+let tool_iron_axe@[alias: "Iron Axe"] = new Item(...) /|\ Задаёт алиас для элемента, позволяющий ссылаться на него
+
+tool_iron_axe /* равносильно */ alias["Iron Axe"]  /* равносильно */ $"Iron Axe"
 
 let entity_name<String>@[length > 3, value ~= "^[a-zA-Z]+$"]? = none /|\ объявлен со значением none через «?», что допустимо
 entity_name = "ABC" /|\ Ошибка, ожидалось более 3-х символов
@@ -426,6 +472,21 @@ const a = name1(name2(name3(value), condition))
 ↓
 const a = value |> name3() |> name2(_, condition) |> name1()
 const a = value |> name3() |> (x: name2(x, condition)) |> name1()
+
+/|\ Обычная функция
+const sum = (a, b) => a + b;
+/|\ Каррированная версия
+const curriedSum = a => b => a + b;
+print(curriedSum(1)(2)); /|\  3
+
+function multiply(a) {
+    return (b) => {
+        return (c) => {
+            return a * b * c
+        }
+    }
+}
+print(b(1)(2)(3)); /|\ 6
 
 
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
