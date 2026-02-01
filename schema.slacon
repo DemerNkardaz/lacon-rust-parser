@@ -1,0 +1,5 @@
+/|\ SLaCoN (Static LaCoN) — формат записи данных с полным запретом на исполнение любой логики, статическое хранилище данных с возможностью статической типизации
+entity_type: <String>
+power_reproduction: <Power>
+fuel: <String>
+fuel_consumption<Expr>: <Int> / <Time>

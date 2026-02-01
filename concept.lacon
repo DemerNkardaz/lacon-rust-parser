@@ -1,3 +1,5 @@
+/|\ Пример устарел
+
 /// Язык LaCoN исполняется на Rust
 [Mode:Data] /// Режим по умолчанию, [Mode:Programm] для режима работы «как другие ЯП»
 
@@ -313,7 +315,7 @@ $let dictionary {
 @class ClassName {
 	static $const &constRef value <any> /// Живёт в объявлении класса
 	$let state none /// Живёт в экземпляре класса
-	
+
 	static @__init(args...) { ... } /// Инициализаця класса
 	@__init(args...) { ... } /// Инициализаця экземпляра класса
 
