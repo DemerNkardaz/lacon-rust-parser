@@ -393,7 +393,7 @@ const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 20
 let explosion_radius<Length>@[value > 0m, value <= 50m] = 15m
 explosion_radius = -15m /|\ автоматически станет 1m, ведь -15m не проходит проверки value > 0m, но предупреждает о неправильном значении
 
-let entity_name<String>@[length > 3, value ~= "[a-zA-Z]+"]? = none /|\ объявлен со значением none через «?», что допустимо
+let entity_name<String>@[length > 3, value ~= "^[a-zA-Z]+$"]? = none /|\ объявлен со значением none через «?», что допустимо
 entity_name = "ABC" /|\ Ошибка, ожидалось более 3-х символов
 entity_name = "Super Tool 7000" /|\ Ошибка, регулярное выражение ожидало буквы A-Z
 
@@ -420,6 +420,12 @@ const useSchema = use schema mySchema {
 const useSchema = use schema mySchema {
 	expr = 40lx / 5g /|\ Ошибка, типы противоречат объявленному выражению
 }
+
+/|\ Оператор конвейера
+const a = name1(name2(name3(value), condition))
+↓
+const a = value |> name3() |> name2(_, condition) |> name1()
+const a = value |> name3() |> (x: name2(x, condition)) |> name1()
 
 
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
