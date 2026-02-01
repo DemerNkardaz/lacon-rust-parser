@@ -2,4 +2,12 @@
 entity_type: <String>
 power_reproduction: <Power>
 fuel: <String> ("solid" | "liquid" | "gas")
-fuel_consumption<Expr>: <Int> / <Time>
+fuel_consumption<Expr>: <Mass> / delta <Time> /|\ 100g / 1min, 10g / 50sec
+/|\ Или:
+fuel_consumption: <MassFlow> /|\ 1g/s
+
+
+
+/|\ Разрешённые конструкции:
+Указатели типов <Type>
+Операторы, связанные с типом <Expr>

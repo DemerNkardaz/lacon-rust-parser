@@ -17,7 +17,19 @@ spread(...) as (...) { /|\ Нельзя объявлять функции, но 
 const
 let (только внутри других конструкций)
 if elif else
-с yield → generate, spread
-include (только таких же .llacon или .slacon) — вставляет результат инклуда на место директивы
-export
+только с yield → generate, spread, for, loop, while, until → break, cancel
+include — вставляет результат инклуда на место директивы
+provide — указывает конкретные элементы получаемые include
+только с schema → use (use schema "<schema path>")
+as, is, in, where, contains, of, where
+root, self
+and, or, not, прочие операторы
+§секции {}
 
+Указатели типов <Type>
+
+/|\ + Все методы типов, например:
+Array.Join(",")
+
+
+/|\ Константы и секции должны быть объявлены строго до первого элемента данных или до [Marker:Output]

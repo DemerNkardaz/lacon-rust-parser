@@ -388,6 +388,28 @@ const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 20
 	}
 }
 
+const expressions = {
+	flux_by_time_3<Expr> = <LuminousFlux> / <Time ** 3>
+}
+
+const createExpressionAlias {
+	exprAlias<Expr> = expressions.flux_by_time_3
+}
+
+const usingExpressionFromAlias = createExpressionAlias.exprAlias(40lm / 3sec)
+
+/|\ Больше применимо для схем:
+
+const mySchema = {
+	expr<Expr>: <LuminousFlux> / <Time ** 3>
+}
+const useSchema = use schema mySchema {
+	expr = 40lm / 3sec /|\ ≈1.481 lm/s³
+}
+const useSchema = use schema mySchema {
+	expr = 40lx / 5g /|\ Ошибка, типы противоречат объявленному выражению
+}
+
 
 const volume = converter(2700L) /|\ = 2.7kL (Килолитров)
 const volume = converter(2700L, 0ML) /|\ = 0.0027ML (Мегалитров)

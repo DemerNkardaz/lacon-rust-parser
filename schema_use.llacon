@@ -3,4 +3,4 @@ use schema "./schema.slacon"
 entity_type "steam-engine"
 power_reproduction 15kW
 fuel "solid"
-fuel_consumption 5 / 1min
+fuel_consumption 100g / 1min
