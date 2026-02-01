@@ -388,6 +388,17 @@ const myButtonElement = renderButton({...self.§settings.UI, color: RGBA(200, 20
 	}
 }
 
+@[атрибуты и правила] указывают ограничения для поля, доступны разные параметры в зависимости от типа данных
+
+let explosion_radius<Length>@[value > 0m, value <= 50m] = 15m
+explosion_radius = -15m /|\ автоматически станет 1m, ведь -15m не проходит проверки value > 0m, но предупреждает о неправильном значении
+
+let entity_name<String>@[length > 3, value ~= "[a-zA-Z]+"]? = none /|\ объявлен со значением none через «?», что допустимо
+entity_name = "ABC" /|\ Ошибка, ожидалось более 3-х символов
+entity_name = "Super Tool 7000" /|\ Ошибка, регулярное выражение ожидало буквы A-Z
+
+
+
 const expressions = {
 	flux_by_time_3<Expr> = <LuminousFlux> / <Time ** 3>
 }
