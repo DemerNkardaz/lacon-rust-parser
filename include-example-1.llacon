@@ -1,0 +1,10 @@
+key_1 value
+key_2 value
+key_3 value
+key_4 value
+
+
+provide { /|\ Указываем какие именно данные мы должны отдавать когда производим include данного файла
+	key_1,
+	key_2
+}
