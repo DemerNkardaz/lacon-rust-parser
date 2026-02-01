@@ -1,7 +1,12 @@
 /|\ LLaCoN (List LaCoN) — формат для записи данных с ограниченным доступом к выполнению логики
+const snowstorm<String> = snāwġebland /|\ [1] Всё ещё возможно объявление переменных/постоянных
+
+
 [Marker:Extension<Storage(Static || Dynamic) || Executable>] /|\ Маркер, который можно использовать в любом LaCoN файле для объявления его «List LaCoN», но лучше создавать файл «.llacon»
 [Marker:Output<Dictionary>] /|\ Тут Marker:Output не обязателен, но им всё ещё можно указать тип вывода — Dictionary, Array и т.д.
+
 key<Length> = 10px + 1em
+key<String> = snowstorm /|\ [1] И использование их в значениях вывода
 
 spread(...) as (...) { /|\ Нельзя объявлять функции, но можно использовать некоторые директивы, как generate, spread для заполнения динамических данных
 	yield key, value
